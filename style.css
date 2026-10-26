@@ -12,13 +12,13 @@ body {
   font-family: "Noto Sans", sans-serif;
 }
 
-/* 안내문 이미지: 원본 크기(1066px)까지만, 화면이 좁으면 그 너비에 맞춰 축소, 화면 가운데 */
+/* 안내문 이미지: 원본 크기(1066×613)까지만, 좁은 화면은 그 너비로 축소해 맨 위에 붙임.
+   이미지 속 회색 띠(위 181px)를 화면 양옆 끝까지 이어서 여백이 떠 보이지 않게 함 */
 .poster {
+  --w: min(100vw, 1066px);
   min-height: 100vh;
   min-height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(var(--band) calc(var(--w) * 181 / 1066), var(--bg) 0);
 }
 
 .poster img {
@@ -26,6 +26,7 @@ body {
   width: 100%;
   max-width: 1066px;
   height: auto;
+  margin: 0 auto;
 }
 
 /* 첫 화면: 언어 선택 */
