@@ -1,0 +1,142 @@
+:root {
+  --band: #e2e2e2;
+  --bg: #ffffff;
+  --ink: #111111;
+  --brand: #b06b80;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.notice {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.notice__head {
+  background: var(--band);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vh;
+  min-height: 30svh;
+  padding: clamp(28px, 5vw, 64px) 16px;
+  text-align: center;
+}
+
+.notice__title {
+  font-weight: 700;
+  font-size: clamp(22px, 3.4vw, 52px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+}
+
+.notice__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(32px, 6vw, 80px) 16px clamp(24px, 4vw, 48px);
+  text-align: center;
+}
+
+.notice__text {
+  font-weight: 400;
+  font-size: clamp(16px, 2.45vw, 36px);
+  line-height: 1.75;
+  max-width: 34em;
+}
+
+/* 넓은 화면에서는 원본 이미지와 같은 위치에서 줄바꿈, 좁은 화면에서는 자연스럽게 흐르도록 */
+.notice__text br.soft { display: inline; }
+
+@media (max-width: 720px) {
+  .notice__text br.soft { display: none; }
+  .notice__text { line-height: 1.8; }
+}
+
+.notice__foot {
+  display: flex;
+  justify-content: center;
+  padding: 0 16px clamp(28px, 5vw, 56px);
+}
+
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--brand);
+  line-height: 1;
+  user-select: none;
+}
+
+.logo__main {
+  font-family: "Oswald", sans-serif;
+  font-weight: 300;
+  font-size: clamp(22px, 2.6vw, 38px);
+  letter-spacing: 0.16em;
+  margin-right: -0.16em;
+}
+
+.logo__sub {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(13px, 1.5vw, 22px);
+  letter-spacing: 0.22em;
+  margin-right: -0.22em;
+  margin-top: 0.25em;
+}
+
+/* 언어별 서체 */
+html[lang="zh-CN"] body { font-family: "Noto Sans SC", sans-serif; }
+html[lang="ja"] body { font-family: "Noto Sans JP", sans-serif; }
+html[lang="ja"] .notice__text { line-break: strict; }
+html[lang="th"] body { font-family: "Noto Sans Thai", sans-serif; }
+html[lang="th"] .notice__text { line-height: 1.9; }
+
+/* 첫 화면: 언어 선택 */
+.picker {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 48px 16px;
+}
+
+.picker__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.picker__list a {
+  display: block;
+  padding: 18px 12px;
+  text-align: center;
+  background: var(--band);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.picker__list a:hover,
+.picker__list a:focus-visible { background: #d4d4d4; }
